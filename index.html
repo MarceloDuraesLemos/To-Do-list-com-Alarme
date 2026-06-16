@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda com Relógio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #fff;
+      margin: 20px;
+      text-align: center;
+    }
+
+    #clock {
+      width: 350px;
+      height: 350px;
+      background-color: #1e1e1e;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.8);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 8px 0;
+      color: #e0e0e0;
+    }
+
+    input, button {
+      border-radius: 8px;
+      border: none;
+      padding: 10px;
+      margin: 5px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input {
+      background: #1e1e1e;
+      color: #e0e0e0;
+    }
+
+    button {
+      background: #3f51b5;
+      color: #fff;
+    }
+
+    button:hover {
+      background: #5c6bc0;
+      transform: scale(1.05);
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+    .right-panel {
+      margin-left: 30px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Agenda com Relógio</h1>
+
+  <div class="container">
+    <canvas id="clock"></canvas>
+
+    <div class="right-panel">
+      <input type="text" id="task" placeholder="Tarefa">
+      <input type="time" id="start">
+      <input type="time" id="end">
+      <input type="color" id="color" value="#ff0000">
+      <button onclick="addTask()">Adicionar</button>
+      <br>
+      
+      <!-- Botão único para escolher som -->
+      <label>Som:</label>
+      <input type="file" id="alarmFile" accept="audio/*">
+
+      <ul id="list"></ul>
+
+      <button onclick="exportTasks()">Exportar Agenda</button>
+      <button onclick="loadTasks()">Importar Agenda</button>
+      <button onclick="clearTasks()">Limpar Tudo</button>
+    </div>
+  </div>
+
+  <!-- Som único para todos os alarmes -->
+  <audio id="alarmSound" src="alarme.mp3"></audio>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
